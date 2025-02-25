@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+     
+#map {
+    width: 100%;    /* Adjust width to your desired size */
+    height: 100%;   /* Adjust height to your desired size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
+    border-radius: 8px; /* Optional: rounded corners */
+
+}
+
+#map svg {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#map circle {
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+    fill: var(--color);
+    stroke: white;
+    stroke-width: 1;
+    opacity: 0.6;
+    pointer-events: auto;
+}
+
+
+.legend {
+    display: flex;
+    flex-direction: row; /* Stack items vertically */
+    margin-block: 3em; /* Space from the map */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    margin: 5px; /* Space between items */
+}
+
+.swatch {
+    width: 20px; /* Width of the swatch */
+    height: 20px; /* Height of the swatch */
+    border-radius: 4px; /* Rounded corners */
+    margin: 5px; /* Space between swatch and label */
+    background-color: transparent; /* Set background color using CSS variable */
+    --color-departures: steelblue;
+    --color-arrivals: darkorange;
+    --color: color-mix(
+        in oklch,
+        var(--color-departures) calc(100% * var(--departure-ratio)),
+        var(--color-arrivals)
+    );
+    background-color: var(--color); /* Use the color variable */
+}
